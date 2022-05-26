@@ -13,5 +13,5 @@ docker images
 
 # To the run the docker image
 ```
-docker run --publish 8000:8000 python-docker
+docker run --publish 8080:8080 python-docker
 ```
