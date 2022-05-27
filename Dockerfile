@@ -13,14 +13,14 @@ RUN apt-get update && \
 
 RUN python -m venv /opt/chatbot-tvlk/app/venv
 
-ENV PATH="/opt/chatbot-tvlk/app/venv/bin:$PATH"
+# ENV PATH="/opt/chatbot-tvlk/app/venv/bin:$PATH"
 
 COPY ./app/requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
 #final stage
-FROM 3.9-slim-bullseye
+FROM python:3.9-slim-bullseye
 
 WORKDIR /opt/chatbot-tvlk/app
 
@@ -28,6 +28,6 @@ COPY --from=build /opt/chatbot-tvlk/app/venv ./venv
 
 COPY /app .
 
-ENV PATH="/opt/chatbot-tvlk/app/venv/bin:$PATH"
+# ENV PATH="/opt/chatbot-tvlk/app/venv/bin:$PATH"
 
 CMD ["python3", "src/app.py" ]
