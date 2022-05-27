@@ -13,7 +13,7 @@ RUN apt-get update && \
 
 RUN python -m venv /opt/chatbot-tvlk/app/venv
 
-# ENV PATH="/opt/chatbot-tvlk/app/venv/bin:$PATH"
+ENV PATH="/opt/chatbot-tvlk/app/venv/bin:$PATH"
 
 COPY ./app/requirements.txt .
 
@@ -28,6 +28,6 @@ COPY --from=build /opt/chatbot-tvlk/app/venv ./venv
 
 COPY /app .
 
-# ENV PATH="/opt/chatbot-tvlk/app/venv/bin:$PATH"
+ENV PATH="/opt/chatbot-tvlk/app/venv/bin:$PATH"
 
 CMD ["python3", "src/app.py" ]
